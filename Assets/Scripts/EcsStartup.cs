@@ -7,6 +7,8 @@ namespace TicToe
         EcsWorld _world;
         EcsSystems _systems;
 
+        public Configuration Configuration;
+
         void Start () {
             // void can be switched to IEnumerator for support coroutines.
             
@@ -19,14 +21,14 @@ namespace TicToe
             _systems
                 // register your systems here, for example:
                  .Add (new InitializeFieldSystem ())
-                // .Add (new TestSystem2 ())
+                 .Add (new CreateCellViewSystem ())
                 
                 // register one-frame components (order is important), for example:
                 // .OneFrame<TestComponent1> ()
                 // .OneFrame<TestComponent2> ()
                 
                 // inject service instances here (order doesn't important), for example:
-                // .Inject (new CameraService ())
+                 .Inject (Configuration)
                 // .Inject (new NavMeshSupport ())
                 .Init ();
         }

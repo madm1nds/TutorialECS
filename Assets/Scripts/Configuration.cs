@@ -1,0 +1,14 @@
+﻿using UnityEngine;
+
+namespace TicToe
+{
+    [CreateAssetMenu]
+    public class Configuration: ScriptableObject
+    {
+        public int LevelWidth = 3;
+        public int LevelHeight = 3;
+        public int ChainLenght = 3;
+        public CellView CellView;
+        public Vector2 Offset;
+    }
+}

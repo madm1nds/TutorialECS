@@ -17,3 +17,5 @@ MonoBehaviour:
   ChainLenght: 3
   CellView: {fileID: 5379596380149364010, guid: 649b7070e63f23b428b0deeb6984350c, type: 3}
   Offset: {x: 0.1, y: 0.1}
+  CrossView: {fileID: 1267609203937651013, guid: 6a09a628610851844b3aedbe184a84b6, type: 3}
+  RingView: {fileID: 5561402735402297007, guid: 5a149a7b4085b1e4e9362d63ede1132e, type: 3}

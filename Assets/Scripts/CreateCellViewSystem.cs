@@ -21,6 +21,8 @@ namespace TicToe
                 cellView.transform.position = new Vector3(position.value.x + _configuration.Offset.x * position.value.x, 
                                                             position.value.y + _configuration.Offset.y * position.value.y);
 
+                cellView.Entity = _filter.GetEntity(index);
+
                 _filter.GetEntity(index).Get<CellViewRef>().value = cellView;
             }
         }

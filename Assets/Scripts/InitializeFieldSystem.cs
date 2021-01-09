@@ -18,6 +18,7 @@ namespace TicToe
                     cellEntity.Get<Position>().value = new Vector2Int(x,y);
                 }
             }
+            _world.NewEntity().Get<UpdateCameraEvent>();
         }
     }
 }

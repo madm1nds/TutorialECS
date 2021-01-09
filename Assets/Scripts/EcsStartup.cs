@@ -8,7 +8,7 @@ namespace TicToe
         EcsSystems _systems;
 
         public Configuration Configuration;
-
+        public SceneData SceneData;
         void Start () {
             // void can be switched to IEnumerator for support coroutines.
             
@@ -18,17 +18,25 @@ namespace TicToe
             Leopotam.Ecs.UnityIntegration.EcsWorldObserver.Create (_world);
             Leopotam.Ecs.UnityIntegration.EcsSystemsObserver.Create (_systems);
 #endif
+            var gameState = new GameState();
             _systems
-                // register your systems here, for example:
+                // register your systems here:
                  .Add (new InitializeFieldSystem ())
                  .Add (new CreateCellViewSystem ())
+                 .Add (new SetCameraSystem ())
+                 .Add (new ControlSystem ())
+                 .Add (new AnalyzeClickSystem ())
+                 .Add (new CreateTakenViewSystem ())
                 
-                // register one-frame components (order is important), for example:
-                // .OneFrame<TestComponent1> ()
+                 //Использует компоент 1 кадр, после чего удаляет компонент                
+                 .OneFrame<UpdateCameraEvent> ()
+                 .OneFrame<Clicked> ()
                 // .OneFrame<TestComponent2> ()
                 
-                // inject service instances here (order doesn't important), for example:
+                // внедрение внешних данных
                  .Inject (Configuration)
+                 .Inject (SceneData)
+                 .Inject (gameState)
                 // .Inject (new NavMeshSupport ())
                 .Init ();
         }
